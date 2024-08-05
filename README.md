@@ -44,3 +44,7 @@ php artisan migrate:fresh --seed
 php artisan checkout:run
 ```
 
+![Screenshot from 2024-08-05 06-22-58](https://github.com/user-attachments/assets/a038aa18-b547-4a1f-887f-f10b429446af)
+
+![Screenshot from 2024-08-05 06-25-05](https://github.com/user-attachments/assets/55a7f222-5aab-4fb1-9077-adaad9edc96d)
+
