@@ -42,12 +42,15 @@ class CheckoutService implements CheckoutServiceInterface
     {
         try {
             $item = $this->itemRepository->findBySku($sku);
+
             if (!$item) {
                 throw new Exception("Item not found: $sku");
             }
 
             $this->updateScannedItems($sku, $item);
+
             $this->calculateSubtotal($item);
+
         } catch (Exception $e) {
             throw new Exception('Error scanning item: ' . $e->getMessage());
         }
@@ -117,21 +120,24 @@ class CheckoutService implements CheckoutServiceInterface
     private function calculateSubtotal($item)
     {
         $quantity = $this->scannedItems[$item->sku];
+
         $pricePerUnit = $item->unit_price;
         $rules = $this->pricingRuleRepository->getRulesForItem($item->id);
 
         $subtotal = $quantity * $pricePerUnit;
+
         $appliedRules = [];
 
         foreach ($rules as $rule) {
             if ($quantity >= $rule->quantity) {
+                $ruleQty = floor($quantity / $rule->quantity);
+                $remainingQty = $quantity % $rule->quantity;
+                $subtotal = ($ruleQty * $rule->price) + ($remainingQty * $pricePerUnit);
                 $appliedRules[] = [
                     'quantity' => $rule->quantity,
                     'price' => $rule->price
                 ];
-                $ruleQty = floor($quantity / $rule->quantity);
-                $subtotal = $ruleQty * $rule->price + ($quantity % $rule->quantity) * $pricePerUnit;
-                break;
+                break; // Break after applying the applicable rule
             }
         }
 
