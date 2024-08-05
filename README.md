@@ -40,18 +40,22 @@ docker exec -it easy_bell_checkout_system-app-1 /bin/bash
 php artisan migrate:fresh --seed
 ```
 6. Run the Test
-* Please make sure you have Unit directory in side the tests directory
+* Please make sure you have The Unit directory in side the tests directory
 * Please be noted that the test is running on the actual database, so make sure to run the database seeding.
 ```
 ./vendor/bin/phpunit
 ```
+![Screenshot from 2024-08-05 08-41-47](https://github.com/user-attachments/assets/97b374eb-8237-4774-af84-68e7f9f0d2eb)
+
 
 6. Enter the checkout cli
 ```
 php artisan checkout:run
 ```
 
+### Screenshot 1
 ![Screenshot from 2024-08-05 06-22-58](https://github.com/user-attachments/assets/a038aa18-b547-4a1f-887f-f10b429446af)
 
+### Screenshot 2
 ![Screenshot from 2024-08-05 06-25-05](https://github.com/user-attachments/assets/55a7f222-5aab-4fb1-9077-adaad9edc96d)
 
