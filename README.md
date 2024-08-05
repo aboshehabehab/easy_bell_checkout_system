@@ -16,7 +16,7 @@ The Easy Bell Checkout System is a command-line application built with Laravel f
 ### Setup and Installation
 1. Clone the Repository
 ```
-git clone https://github.com/yourusername/easy_bell_checkout_system.git
+git clone git@github.com:aboshehabehab/easy_bell_checkout_system.git
 ```
 
 2. Open the project directory
